@@ -2104,6 +2104,51 @@ lives on the [Models FAQ](/help/faq-models).
   </Accordion>
 </AccordionGroup>
 
+## China / 国内用户
+
+<AccordionGroup>
+  <Accordion title="I'm in mainland China and the Gateway can't reach OpenAI / Anthropic. How do I route through a proxy?">
+    OpenClaw can route outbound HTTP and WebSocket traffic through a forward
+    proxy you run. Enable it in config:
+
+    ```json5
+    {
+      proxy: {
+        enabled: true,
+        proxyUrl: "http://127.0.0.1:7890", // your local proxy
+      },
+    }
+    ```
+
+    Protected processes (`openclaw gateway run`, `openclaw node run`,
+    `openclaw agent --local`) then send model-provider and other runtime
+    traffic through that proxy. Standard `HTTP_PROXY` / `HTTPS_PROXY` /
+    `NO_PROXY` environment variables are also recognized.
+
+    OpenClaw does not ship or manage a proxy itself — you run your own. See
+    [Network proxy](/security/network-proxy) for the full setup, TLS options,
+    and security notes.
+
+  </Accordion>
+
+  <Accordion title="Can I use Chinese model providers instead of OpenAI / Anthropic?">
+    Yes. OpenClaw supports several providers that are domestic services and
+    generally do not require a proxy. Set the matching API key, then run
+    `openclaw onboard` (or `openclaw configure`) to select the model:
+
+    - DeepSeek — `DEEPSEEK_API_KEY`
+    - Qwen / 通义千问 — `DASHSCOPE_API_KEY`
+    - Moonshot / Kimi — `MOONSHOT_API_KEY`
+    - Zhipu GLM / 智谱 — `ZAI_API_KEY`
+    - MiniMax — `MINIMAX_API_KEY`
+    - Baidu Qianfan / 百度千帆 — `QIANFAN_API_KEY`
+    - Volcengine Doubao / 火山引擎豆包 — `VOLCANO_ENGINE_API_KEY`
+
+    See [Models](/concepts/models) for model selection and per-agent routing.
+
+  </Accordion>
+</AccordionGroup>
+
 ---
 
 Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHub discussion](https://github.com/openclaw/openclaw/discussions).
