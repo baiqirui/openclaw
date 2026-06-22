@@ -35,6 +35,30 @@ Requires OpenClaw 2026.5.29 or above. Run `openclaw --version` to check. Upgrade
 
 ---
 
+## Feishu vs Lark
+
+Feishu (`open.feishu.cn`, mainland China) and Lark (`open.larksuite.com`,
+international) are the same platform on different domains. Set
+`channels.feishu.domain` to match where your organization and app live:
+
+- `"feishu"` (default) - Feishu, mainland China (`open.feishu.cn`)
+- `"lark"` - Lark, international (`open.larksuite.com`)
+
+An app created on one platform cannot be used on the other. Create your app on
+the platform that matches your organization, then set `domain` accordingly.
+
+```json5
+{
+  channels: {
+    feishu: {
+      domain: "lark", // omit or use "feishu" for mainland China
+    },
+  },
+}
+```
+
+---
+
 ## Access control
 
 ### Direct messages
