@@ -1,6 +1,8 @@
 ---
 summary: "Telegram bot support status, capabilities, and configuration"
 read_when:
+  - You want to connect OpenClaw to Telegram
+  - You are setting up a Telegram bot for the first time
   - Working on Telegram features or webhooks
 title: "Telegram"
 ---
@@ -20,6 +22,13 @@ Production-ready for bot DMs and groups via grammY. Long polling is the default 
 </CardGroup>
 
 ## Quick setup
+
+<Warning>
+Telegram does not use `openclaw channels login telegram`. Unlike most other
+channels, Telegram is configured by adding your bot token directly to
+`openclaw.json` or setting the `TELEGRAM_BOT_TOKEN` environment variable.
+Running `openclaw channels login telegram` will fail.
+</Warning>
 
 <Steps>
   <Step title="Create the bot token in BotFather">
